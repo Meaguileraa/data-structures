@@ -232,7 +232,7 @@ def get_cohort_for(filename, name):
     Return:
       - str: the person's cohort or None
     """
-   hagworts_scroll = open(filename)
+    hagworts_scroll = open(filename)
 
 
     for line in hagworts_scroll:
