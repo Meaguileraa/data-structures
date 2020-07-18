@@ -264,7 +264,26 @@ def find_duped_last_names(filename):
       - set[str]: a set of strings
     """
 
-    # TODO: replace this with your code
+    duplicate_names = set()
+    seen = set()
+    hagworts_scroll = open(filename)
+
+
+    for line in hagworts_scroll:
+      line = line.rstrip()
+      words = line.split('|')
+
+      first_name = words[0]
+      last_name = words[1]
+      house = words[2]
+      advisor = words[3]
+      cohort_name = words[4]
+      full_name = first_name + (" ") + last_name
+
+      if last_name in seen:
+        duplicate_names.add(last_name)
+      seen.add(last_name)
+    return duplicate_names
 
 
 def get_housemates_for(filename, name):
