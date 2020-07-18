@@ -16,8 +16,20 @@ def all_houses(filename):
     """
 
     houses = set()
+    hagworts_scroll = open(filename)
 
-    # TODO: replace this with your code
+    for line in hagworts_scroll:
+      line = line.rstrip()
+      words = line.split('|')
+
+      first_name = words[0]
+      last_name = words[1]
+      house = words[2]
+      advisor = words[3]
+      cohort_name = words[4]
+
+      if house:
+        houses.add(house)
 
     return houses
 
