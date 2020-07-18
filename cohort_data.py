@@ -194,7 +194,20 @@ def all_data(filename):
 
     all_data = []
 
-    # TODO: replace this with your code
+    hagworts_scroll = open(filename)
+
+    for line in hagworts_scroll:
+      line = line.rstrip()
+      words = line.split('|')
+
+      first_name = words[0]
+      last_name = words[1]
+      house = words[2]
+      advisor = words[3]
+      cohort_name = words[4]
+      full_name = first_name + (" ") + last_name
+
+      all_data.append((full_name, house, advisor, cohort_name))
 
     return all_data
 
