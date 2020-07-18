@@ -297,8 +297,42 @@ def get_housemates_for(filename, name):
     >>> get_housemates_for('cohort_data.txt', 'Hermione Granger')
     {'Angelina Johnson', ..., 'Seamus Finnigan'}
     """
+    hagworts_scroll = open(filename)
 
-    # TODO: replace this with your code
+    for line in hagworts_scroll:
+      line = line.rstrip()
+      words = line.split('|')
+
+      first_name = words[0]
+      last_name = words[1]
+      house = words[2]
+      advisor = words[3]
+      cohort_name = words[4]
+      full_name = first_name + (" ") + last_name
+
+
+    same_house = set()
+    housemate = None
+    for person in hagworts_scroll:
+      full_name, house, advisor, cohort_name = person
+
+      if full_name == name:
+        housemate = person
+        break
+
+    if housemate:
+      housemate_name, housemate_house, housemate_advisor, housemate_cohort = housemate
+
+      for full_name, house, advisor, cohort_name in hagworts_scroll:
+        if ((house, cohort_name) == (housemate_house, housemate_name) and 
+          full_name != name):
+          same_house.add(full_name)
+          same_house = sort(same_house)
+  
+
+    print(sorted(same_house))
+    return same_house
+     #set of students in the same house 
 
 
 ##############################################################################
