@@ -115,7 +115,6 @@ def all_names_by_house(filename):
     Return:
       - list[list]: a list of lists
     """
-
     dumbledores_army = []
     gryffindor = []
     hufflepuff = []
@@ -124,9 +123,54 @@ def all_names_by_house(filename):
     ghosts = []
     instructors = []
 
-    # TODO: replace this with your code
+    hagworts_scroll = open(filename)
 
-    return []
+    for line in hagworts_scroll:
+      line = line.rstrip()
+      words = line.split('|')
+
+      first_name = words[0]
+      last_name = words[1]
+      house = words[2]
+      advisor = words[3]
+      cohort_name = words[4]
+      full_name = first_name + (" ") + last_name
+
+      if house: 
+
+        if house == "Dumbledore's Army":
+          dumbledores_army.append(full_name)
+
+        elif house == "Gryffindor":
+          gryffindor.append(full_name)
+
+        elif house == "Hufflepuff":
+          hufflepuff.append(full_name)
+
+        elif house == "Ravenclaw":
+          ravenclaw.append(full_name)
+
+        elif house == "Slytherin":
+          slytherin.append(full_name)
+
+      else:
+
+        if cohort_name == "I":
+          instructors.append(full_name)
+
+        elif cohort_name == "G":
+          ghosts.append(full_name)
+
+
+
+
+    final_list = [sorted(dumbledores_army), sorted(gryffindor), 
+                    sorted(hufflepuff), sorted(ravenclaw), 
+                    sorted(slytherin), sorted(ghosts), sorted(instructors)]
+
+
+    return final_list
+
 
 
 def all_data(filename):
