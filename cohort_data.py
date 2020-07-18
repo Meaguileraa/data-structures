@@ -232,8 +232,22 @@ def get_cohort_for(filename, name):
     Return:
       - str: the person's cohort or None
     """
+   hagworts_scroll = open(filename)
 
-    # TODO: replace this with your code
+
+    for line in hagworts_scroll:
+      line = line.rstrip()
+      words = line.split('|')
+
+      first_name = words[0]
+      last_name = words[1]
+      house = words[2]
+      advisor = words[3]
+      cohort_name = words[4]
+      full_name = first_name + (" ") + last_name
+
+      if full_name == name:
+        return cohort_name
 
 
 def find_duped_last_names(filename):
