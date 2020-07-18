@@ -64,7 +64,23 @@ def students_by_cohort(filename, cohort='All'):
 
     students = []
 
-    # TODO: replace this with your code
+    hagworts_scroll = open(filename)
+
+    for line in hagworts_scroll:
+      line = line.rstrip()
+      words = line.split('|')
+
+      first_name = words[0]
+      last_name = words[1]
+      house = words[2]
+      advisor = words[3]
+      cohort_name = words[4]
+
+      if cohort_name not in ("G", "I") and cohort in ('All', cohort_name):
+
+        full_name = first_name +(" ") +last_name 
+
+        students.append(full_name)
 
     return sorted(students)
 
